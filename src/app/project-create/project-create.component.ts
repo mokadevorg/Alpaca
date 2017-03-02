@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from "../project.service";
 import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Category } from "../category";
 
 @Component({
   selector: 'app-project-create',
@@ -10,8 +11,6 @@ import { Router } from "@angular/router";
 })
 export class ProjectCreateComponent implements OnInit {
   form: FormGroup;
-  categories: String[] = ['Games', 'Movies', 'Study', 'Engineering'];
-  submitted = false;
 
   constructor(private projectService: ProjectService,
               private router: Router) {
@@ -22,22 +21,16 @@ export class ProjectCreateComponent implements OnInit {
       name: new FormControl('', [<any>Validators.required, <any>Validators.minLength(8)]),
       description: new FormControl('', [<any>Validators.required]),
       category: new FormControl('', [<any>Validators.required]),
-    })
+    });
   }
 
-  onSubmit(form: FormGroup) {
-    this.submitted = true;
+  onSubmit(value: any) {
+    let name = value.name;
+    let description = value.description;
+    let category = value.category;
 
-    if (form.valid) {
-      let name = form.value.name;
-      let description = form.value.description;
-      let category = form.value.category;
-
-      this.projectService.create(name, description, category)
-        .then(project => this.router.navigate(['/projects', project.id]))
-        .catch(reject => alert(reject));
-    } else {
-      this.submitted = false;
-    }
+    this.projectService.create(name, description, category)
+      .then(project => this.router.navigate(['/projects', project.id]))
+      .catch(reject => alert(reject));
   }
 }

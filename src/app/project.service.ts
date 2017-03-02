@@ -8,7 +8,6 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ProjectService {
   url: string = 'http://10.195.250.157:8000/api/projects';
-
   headers = new Headers({
     'Content-Type': 'application/json',
     'Accept': 'application/json'
@@ -18,7 +17,8 @@ export class ProjectService {
   }
 
   list(): Promise<Project[]> {
-    return this.http.get(this.url)
+    return this.http
+      .get(this.url)
       .toPromise()
       .then(response => response.json() as Project[])
       .catch(this.handleError);
@@ -39,12 +39,16 @@ export class ProjectService {
         category: category,
       }), {headers: this.headers})
       .toPromise()
-      .then(res => res.json())
+      .then(res => res.json() as Project)
       .catch(this.handleError);
   }
 
-  update(newProject: Project): Promise<Project> {
-    return Promise.resolve(newProject);
+  update(project: Project): Promise<Project> {
+    return this.http
+      .put(`${this.url}/${project.id}`, JSON.stringify(project), {headers: this.headers})
+      .toPromise()
+      .then(project => project.json() as Project)
+      .catch(this.handleError);
   }
 
   remove(id: string): Promise<Response> {

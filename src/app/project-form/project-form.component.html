@@ -1,5 +1,4 @@
 <form [formGroup]="form" novalidate (ngSubmit)="onSubmit(form)">
-
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" formControlName="name">
@@ -18,11 +17,10 @@
     <label for="category">Category</label>
     <select id="category" class="form-control" formControlName="category">
       <option *ngFor="let category of categories" [value]="category">
-        {{category}}
+        {{category.name}}
       </option>
     </select>
   </div>
 
   <button type="submit" class="btn btn-success" [disabled]="!form.valid || submitted">Create</button>
 </form>
-

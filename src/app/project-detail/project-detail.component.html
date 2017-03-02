@@ -1,11 +1,15 @@
-<div class="row" *ngIf="project">
-  <div class="col-sm-12">
-    <ol class="breadcrumb">
-      <li><a [routerLink]="['/']">Home</a></li>
-      <li><a [routerLink]="['/projects']">Projects</a></li>
-      <li><a [routerLink]="['/projects', project.id]">{{project.name}}</a></li>
-    </ol>
+<div *ngIf="project">
+  <div class="row">
+    <div class="col-sm-12">
+      <ol class="breadcrumb">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/projects']">Projects</a></li>
+        <li><a [routerLink]="['/projects', project.id]">{{project.name}}</a></li>
+      </ol>
+    </div>
+  </div>
 
+  <app-view-title [title]="project.name">
     <div class="pull-right">
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -19,13 +23,15 @@
         </ul>
       </div>
     </div>
+  </app-view-title>
 
-    <h2>{{project.name}}</h2>
+  <div class="row">
+    <div class="col-sm-12">
+      <span class="pull-right badge">{{project.category}}</span>
 
-    <span class="pull-right badge">{{project.category}}</span>
-
-    <p class="text-muted">
-      {{project.description}}
-    </p>
+      <p class="text-muted">
+        {{project.description}}
+      </p>
+    </div>
   </div>
 </div>

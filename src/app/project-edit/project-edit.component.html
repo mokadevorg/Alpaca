@@ -1,7 +1,20 @@
-<div class="page-header">
-  <h2>Edit Project</h2>
-</div>
-
 <div *ngIf="project">
-  <app-project-form (onSubmit)="onSubmit($event)"></app-project-form>
+  <div class="row">
+    <div class="col-sm-12">
+      <ol class="breadcrumb">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/projects']">Projects</a></li>
+        <li><a [routerLink]="['/projects', project.id]">{{project.name}}</a></li>
+        <li><a [routerLink]="['/projects', project.id, 'edit']">Edit</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <app-view-title [title]="'Edit Project'"></app-view-title>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <app-project-form (onSubmit)="onSubmit($event)" [project]="project"></app-project-form>
+    </div>
+  </div>
 </div>

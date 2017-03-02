@@ -11,6 +11,8 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
 import { ProjectCreateComponent } from './project-create/project-create.component';
 import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
+import { ViewTitleComponent } from './view-title/view-title.component';
+import { CategoryService } from "./category.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { ProjectFormComponent } from './project-form/project-form.component';
     ProjectDetailComponent,
     ProjectCreateComponent,
     ProjectEditComponent,
-    ProjectFormComponent
+    ProjectFormComponent,
+    ViewTitleComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { ProjectFormComponent } from './project-form/project-form.component';
     RoutingModule
   ],
   providers: [
-    ProjectService
+    ProjectService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

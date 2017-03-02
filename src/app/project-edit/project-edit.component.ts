@@ -28,6 +28,6 @@ export class ProjectEditComponent implements OnInit {
     this.project.category = value.category;
 
     this.projectService.update(this.project)
-      .then(project => this.router.navigate(['/project', project.id]));
+      .then(project => this.router.navigate(['/projects', project.id]));
   }
 }
