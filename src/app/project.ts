@@ -1,3 +1,7 @@
-/**
- * Created by mijara on 3/1/17.
- */
+export class Project {
+  constructor(public id: string,
+              public name: string,
+              public description: string,
+              public category: string) {
+  }
+}

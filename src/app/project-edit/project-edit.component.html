@@ -1,0 +1,7 @@
+<div class="page-header">
+  <h2>Edit Project</h2>
+</div>
+
+<div *ngIf="project">
+  <app-project-form (onSubmit)="onSubmit($event)"></app-project-form>
+</div>

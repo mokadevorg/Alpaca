@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="page-header">
+      <h3>Create Project</h3>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <form [formGroup]="form" novalidate (ngSubmit)="onSubmit(form)">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+
+        <small [hidden]="form.controls.name.valid || form.controls.name.pristine">
+          Name is required (minimum 8 characters).
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" formControlName="description">
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" class="form-control" formControlName="category">
+          <option *ngFor="let category of categories" [value]="category">
+            {{category}}
+          </option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!form.valid || submitted">Create</button>
+    </form>
+  </div>
+</div>

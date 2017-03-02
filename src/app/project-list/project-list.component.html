@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/projects']">Projects</a></li>
+    </ol>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header">
+          <div class="pull-right">
+            <a [routerLink]="['/projects', 'create']" class="btn btn-primary">Create Project</a>
+          </div>
+          <h3>All Projects</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="list-group" *ngIf="projects">
+          <li class="list-group-item" *ngFor="let project of projects">
+            <h5><a [routerLink]="['/projects', project.id]">{{project.name}}</a></h5>
+            <span class="pull-right badge">{{project.category}}</span>
+            <p class="text-muted">{{project.description}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

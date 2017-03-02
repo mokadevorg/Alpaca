@@ -1,0 +1,31 @@
+<div class="row" *ngIf="project">
+  <div class="col-sm-12">
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/projects']">Projects</a></li>
+      <li><a [routerLink]="['/projects', project.id]">{{project.name}}</a></li>
+    </ol>
+
+    <div class="pull-right">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+          Actions <span class="caret"></span>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a [routerLink]="['/projects', project.id, 'edit']">Edit</a></li>
+          <li><a (click)="remove(project.id)">Delete</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>{{project.name}}</h2>
+
+    <span class="pull-right badge">{{project.category}}</span>
+
+    <p class="text-muted">
+      {{project.description}}
+    </p>
+  </div>
+</div>

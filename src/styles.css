@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+.page-header {
+  margin: 0 0 8px;
+}
+
+.page-header h3 {
+  margin: 4px;
+  padding: 0;
+}
